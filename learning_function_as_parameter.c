@@ -11,8 +11,3 @@ void myFunction(void (*f)(int), int nbr2)
         printf("hey hey%i\n", nbr2);
     }
 }
-int main(void)  
-{
-    myFunction(printNumber, 2);
-    return (0);
-}
