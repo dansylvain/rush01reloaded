@@ -9,11 +9,17 @@ void    max_filter_top(int ***matrix, int x, int sqrlen)
     while (i < sqrlen)
     {
         z = 0;
-        while (z < sqrlen)
+        if (matrix[i][x][i] != i + 1)
+            clean_cell(matrix, x, i, sqrlen);
+        else
         {
-            matrix[i][x][z++] = 0;
+            while (z < sqrlen)
+            {
+
+                matrix[i][x][z++] = 0;
+            }
+            matrix[i][x][i] = i + 1;
         }
-        matrix[i][x][i] = i + 1;
         i++;
     }
 }
@@ -27,11 +33,16 @@ void    max_filter_bottom(int ***matrix, int x, int sqrlen)
     while (i >= 0)
     {
         z = 0;
-        while (z < sqrlen)
+        if (matrix[i][x][sqrlen - i - 1] != sqrlen - i)
+            clean_cell(matrix, x, i, sqrlen);
+        else
         {
-            matrix[i][x][z++] = 0;
+            while (z < sqrlen)
+            {
+                matrix[i][x][z++] = 0;
+            }
+            matrix[i][x][sqrlen - i - 1] = sqrlen - i ;        
         }
-        matrix[i][x][i] = sqrlen - i ;        
         i--;
     }
 }
@@ -45,11 +56,17 @@ void    max_filter_left(int ***matrix, int x, int sqrlen)
     while (i < sqrlen)
     {
         z = 0;
-        while (z < sqrlen)
+        if (matrix[x][i][i] != i + 1)
+            clean_cell(matrix, i, x, sqrlen);
+        else
         {
-            matrix[x][i][z++] = 0;
+            while (z < sqrlen)
+            {
+                matrix[x][i][z++] = 0;
+            }
+            matrix[x][i][i] = i + 1;
         }
-        matrix[x][i][i] = i + 1;
+
         i++;
     }
 }
@@ -63,11 +80,16 @@ void    max_filter_right(int ***matrix, int x, int sqrlen)
     while (i >= 0)
     {
         z = 0;
-        while (z < sqrlen)
+        if (matrix[x][i][sqrlen - i - 1] != sqrlen - i)
+            clean_cell(matrix, i, x, sqrlen);
+        else
         {
-            matrix[x][i][z++] = 0;
+            while (z < sqrlen)
+            {
+                matrix[x][i][z++] = 0;
+            }
+            matrix[x][i][sqrlen - i - 1] = sqrlen - i ;
         }
-        matrix[x][i][i] = sqrlen - i ;
         i--;
     }
 }

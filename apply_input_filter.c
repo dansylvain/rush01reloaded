@@ -1,5 +1,9 @@
 #include "headerfile.h"
 
+// ********************************
+// MAX FILTERS IN SEPARATE FILE !!!
+// ********************************
+
 void    set_counters(int *x, int *y, int sqrlen)
 {
     if (*y == 1)
@@ -26,9 +30,10 @@ void    min_filter(int ***matrix, int *y, int *x, int sqrlen)
     save_y = *y;
     set_counters(x, y, sqrlen);
     z = 0;
-    if (cell_iscomplete(matrix, *x, *y, sqrlen) && matrix[*y][*x][0] != sqrlen)
+    if (cell_iscomplete(matrix, *x, *y, sqrlen) && matrix[*y][*x][sqrlen - 1] != sqrlen)
     {
-        matrix[*y][*x][0] = 0;
+        printf("cleaning...\n");
+        clean_cell(matrix, *x, *y, sqrlen);
     }
     else
     {

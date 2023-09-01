@@ -1,27 +1,18 @@
 #include "headerfile.h"
 
-void    display_solution(int ***matrix, int sqrlen)
+int check_args(int argc, char**argv)
 {
-    int x;
-    int y;
-    int num;
-
-    y = 0;
-    printf("Solution :\n");
-    while (y < sqrlen)
+    if (argc != 2)
     {
-        x = 0;
-        while (x < sqrlen)
-        {
-            num = matrix[y][x][0] + 48;
-            write(1, &num, 1);
-            write(1, " ", 1);
-            x++;
-        }
-        write(1, "\n", 1);
-        y++;
+        display_error();
+        return (0);
     }
-    
+    if (!inputstr_isvalid(argv[1]))
+    {
+        display_error();
+        return (0);
+    }
+    return(1);
 }
 
 int main(int argc, char **argv)
@@ -32,18 +23,25 @@ int main(int argc, char **argv)
     int sqrlen;
 
     sqrlen = get_digit_nbr(argv[1]) / 4;
-    if (check_args(argc, argv))
+    if (!check_args(argc, argv))
         return (1);
     input_tab = create_input_tab(argv[1]);
+    display_input_tab(input_tab, sqrlen);
     matrix = create_matrix(sqrlen);
+    //display_matrix(matrix, sqrlen);
     matrix_copy = create_matrix(sqrlen);
     apply_input_filter(matrix, input_tab, sqrlen);
-    apply_matrix_filter(matrix, sqrlen);
-    matrix = get_solution(matrix, matrix_copy, sqrlen);
-    clean_matrix(matrix, sqrlen);
-    display_solution(matrix, sqrlen);
+    apply_input_filter(matrix, input_tab, sqrlen);
+    display_matrix(matrix, sqrlen);
 
-    free_tab(input_tab);
-    free_matrix(matrix, sqrlen);
+        // apply_matrix_filter(matrix, sqrlen);
+        // matrix = get_solution(matrix, matrix_copy, sqrlen);
+        // clean_matrix(matrix, sqrlen);
+        // display_solution(matrix, sqrlen);
+
+        // free_tab(input_tab);
+        // free_matrix(matrix, sqrlen);
     return (0);
+    (void)matrix_copy;
+    (void)matrix;
 }

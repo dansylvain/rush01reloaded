@@ -9,16 +9,19 @@ all : $(EXEC)
 	$(CC) -o $@ -c $<
 
 $(EXEC) : $(OBJ)
-	$(CC) -o $@ $^
+	$(CC) -Wall -Wextra -Werror -o $@ $^
 
 clean :
 	rm -rf *.o
 
-mrproper : clean
-	rm -rf rush-01
+fclean : clean
+	rm -f $(EXEC)
+
+re : fclean all
 
 # $@ nom cible
 # $< nom premiere dependance
 # $^ liste dependances
 # $? liste dependance plus recentes que la cible
 # $* nom fichier, sans son extension
+

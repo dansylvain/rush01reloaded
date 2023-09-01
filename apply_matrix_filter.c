@@ -46,17 +46,13 @@ void    matrix_filter(int ***matrix, int x, int y, int sqrlen)
 void    clean_cell(int ***matrix, int x, int y, int sqrlen)
 {
     int z;
-    int winner;
 
     z = 0;
     while (z < sqrlen)
     {
-        if (matrix[y][x][z] != 0)
-            winner = z + 1;
         matrix[y][x][z] = 0;
         z++;
     }
-    matrix[y][x][0] = winner;
 }
 
 void    clean_matrix(int ***matrix, int sqrlen)

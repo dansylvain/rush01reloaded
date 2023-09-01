@@ -15,17 +15,3 @@ int isnum(char c)
 }
 //***********************************************************************
 
-int check_args(int argc, char**argv)
-{
-    if (argc != 2)
-    {
-        display_error();
-        return (1);
-    }
-    if (!inputstr_isvalid(argv[1]))
-    {
-        display_error();
-        return (1);
-    }
-    return(0);
-}

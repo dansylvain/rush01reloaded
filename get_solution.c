@@ -33,9 +33,9 @@ int    ***get_the_shit_done(int ***matrix, int ***matrix_copy, int *xyz, int sqr
     z = xyz[2];
     
 
-        if (!get_matrix_state(matrix, sqrlen))
+        if (!get_matrix_state(matrix_copy, sqrlen))
         {
-            return (matrix);
+            return (matrix_copy);
         }
         else if (get_matrix_state(matrix, sqrlen) == -1)
         {
@@ -72,7 +72,6 @@ int    ***get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
                 xyz[1] = y;
                 xyz[2] = z;
                 get_the_shit_done(matrix, matrix_copy, xyz, sqrlen);
-
                 z++;
             }
             x++;
@@ -81,54 +80,3 @@ int    ***get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
     }
     return (matrix);
 }
-
-// void    modify_matrix(int ***matrix, int ***matrix_copy, int sqrlen)
-// {
-//     int x;
-//     int y;
-//     int z;
-
-//     y = 0;
-//     while (y < sqrlen)
-//     {
-//         x = 0;
-//         while (x < sqrlen)
-//         {
-//             z = 0;
-//             if (cell_iscomplete(matrix, x, y, sqrlen) == 1)
-//             {
-//                 erase_last_non_null_digit(matrix[y][x], matrix[y][x], z, sqrlen);
-//                 return;
-//             }
-//             x++;
-//         }
-//         y++;
-//     }
-//     (void)matrix_copy;
-// }
-
-// void    get_solution(int ***matrix, int sqrlen)
-// {
-//     int ***matrix_copy;
-
-//     matrix_copy = alloc_memo_matrix(NULL, sqrlen);
-//     matrix_copy = copy_matrix(matrix, matrix_copy, sqrlen);
-//     while (get_matrix_state(matrix_copy, sqrlen) > 0)
-//     {
-//         erase_all_but_one_digit(matrix_copy, sqrlen);
-//         apply_matrix_filter(matrix_copy, sqrlen);
-//     }
-
-//     if (get_matrix_state(matrix_copy, sqrlen) == -1)
-//     {
-//         modify_matrix(matrix, matrix_copy, sqrlen);
-//     }
-//     else if (!get_matrix_state(matrix_copy, sqrlen))
-//     {
-//         display_solution(matrix_copy, sqrlen);
-//         return;
-//     }
-//     free_matrix(matrix_copy, sqrlen);
-//     get_solution(matrix, sqrlen);
-
-// }

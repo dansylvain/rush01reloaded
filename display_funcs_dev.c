@@ -1,5 +1,29 @@
 #include "headerfile.h"
 
+void    display_solution(int ***matrix, int sqrlen)
+{
+    int x;
+    int y;
+    int num;
+
+    y = 0;
+    printf("Solution :\n");
+    while (y < sqrlen)
+    {
+        x = 0;
+        while (x < sqrlen)
+        {
+            num = matrix[y][x][0] + 48;
+            write(1, &num, 1);
+            write(1, " ", 1);
+            x++;
+        }
+        write(1, "\n", 1);
+        y++;
+    }
+    
+}
+
 void    display_input_tab(int **input_tab, int sqrlen)
 {
     int i;
