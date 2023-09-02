@@ -23,7 +23,7 @@ int inputstr_isvalid(char *str);
 int cell_iscomplete(int ***matrix, int x, int y, int sqrlen);
 int get_matrix_state(int ***matrix, int sqrlen);
 //*************************** CREATE_MATRIX.C ****************************
-int ***alloc_memo_matrix(int ***matrix);
+int ***alloc_memo_matrix(int ***matrix, int sqrlen);
 int ***fill_matrix(int ***matrix, int sqrlen);
 int ***create_matrix(int sqrlen);
 int ***copy_matrix(int ***matrix, int ***matrix_copy, int sqrlen);
