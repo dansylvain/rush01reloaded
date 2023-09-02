@@ -28,24 +28,24 @@ int ***copy_matrix(int ***matrix, int ***copy_matrix, int sqrlen)
 }
 
 
-int ***alloc_memo_matrix(int ***matrix)
+int ***alloc_memo_matrix(int ***matrix, int sqrlen)
 {
     int i;
     int j;
 
     i = 0;
-    matrix = malloc(sizeof(int **) * 9);
+    matrix = malloc(sizeof(int **) * sqrlen);
     if (matrix == NULL)
         display_error();
-    while (i < 9)
+    while (i < sqrlen)
     {
         j = 0;
-        matrix[i] = malloc(sizeof(int *) * 9);
+        matrix[i] = malloc(sizeof(int *) * sqrlen);
         if (matrix[i] == NULL)
             display_error();
-        while(j < 9)
+        while(j < sqrlen)
         {
-            matrix[i][j] = malloc(sizeof(int) * 9);
+            matrix[i][j] = malloc(sizeof(int) * (sqrlen + 1));
             if (matrix == NULL)
                 display_error();
             j++;
@@ -87,7 +87,7 @@ int ***create_matrix(int sqrlen)
 {
     int ***matrix;
 
-    matrix = alloc_memo_matrix(NULL);
+    matrix = alloc_memo_matrix(NULL, sqrlen);
     matrix = fill_matrix(matrix, sqrlen);
     return (matrix);
 }
