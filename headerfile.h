@@ -38,6 +38,8 @@ void free_matrix(int ***matrix, int sqrlen);
 void    display_error(void);
 int isnum(char c);
 int check_args(int argc, char**argv);
+int get_sqrlen(int ***matrix);
+
 //************************ GET_SOLUTION.C ********************************
 int    ***get_solution(int ***matrix, int ***matrix_copy, int sqrlen);
 //************************ MAIN.C ****************************************

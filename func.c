@@ -13,5 +13,17 @@ int isnum(char c)
     else
         return (0);
 }
+
+int get_sqrlen(int ***matrix)
+{
+    int sqrlen;
+
+    sqrlen = 0;
+    while (matrix[0][0][sqrlen])
+    {
+        sqrlen ++;
+    }
+    return (sqrlen);
+}
 //***********************************************************************
 

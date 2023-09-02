@@ -32,8 +32,8 @@ int main(int argc, char **argv)
     matrix_copy = create_matrix(sqrlen);
     apply_input_filter(matrix, input_tab, sqrlen);
     apply_input_filter(matrix, input_tab, sqrlen);
-    display_matrix(matrix, sqrlen);
-
+    //display_matrix(matrix, sqrlen);
+    printf("sqrlen: %i\n", get_sqrlen(matrix));
         // apply_matrix_filter(matrix, sqrlen);
         // matrix = get_solution(matrix, matrix_copy, sqrlen);
         // clean_matrix(matrix, sqrlen);
