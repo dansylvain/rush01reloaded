@@ -5,7 +5,8 @@
 int get_cell_value(int *tab, int sqrlen)
 {
     int i;
-    
+
+    i = 0;
     while (i < sqrlen)
     {
         if (tab[i] != 0)
@@ -19,19 +20,23 @@ int check_col_up(int ***matrix, int input, int sqrlen, int x)
 {
     int y;
     int val;
+    int res;
 
-    val = 1;
+    res = 1;
+    val = 0;
     y = 0;
     while (y < sqrlen)
     {
-        if ( x > 1 && get_cell_value(matrix[y][x], sqrlen) > get_cell_value(matrix[y][x - 1], sqrlen))
-            val++;
+        if ( y > 1 && val > get_cell_value(matrix[y - 1][x], sqrlen))
+            res++;
+        if (get_cell_value(matrix[y][x], sqrlen) > val)
+            val = get_cell_value(matrix[y][x], sqrlen);
         y++;
     }
-    if (val == input)
+    if (val + 1 == input)
         return (0);
     else
-        return (val);
+        return (res);
 }
 
 // int check_col_down(int ***matrix, int input, int sqrlen, int x)
@@ -78,8 +83,9 @@ int solution_is_correct(int ***matrix, int **input_tab)
     int sqrlen;
 
     sqrlen = get_sqrlen(matrix);
-    is_OK;
+    is_OK = 0;
     y = 0;
+    printf("solution_is_correct\n");
     while (y < 4)
     {
         x = 0;

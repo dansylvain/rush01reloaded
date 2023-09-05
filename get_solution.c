@@ -79,8 +79,8 @@ void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen, int **input_
                             if (solution_is_correct(matrix_copy, input_tab))
                             display_solution(matrix_copy, sqrlen);
                         }
-                    //display_matrix(matrix_copy);
-                    //get_solution(matrix, matrix_copy, sqrlen);
+                    display_matrix(matrix_copy);
+                    get_solution(matrix, matrix_copy, sqrlen, input_tab);
                 }
                 z++;
             }

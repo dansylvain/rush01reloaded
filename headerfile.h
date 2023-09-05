@@ -26,6 +26,11 @@ int matrix_is_complete(int  ***matrix);
 
 //******************** CHECK_SOLUTION.C **********************************
 int solution_is_correct(int ***matrix, int **input_tab);
+int get_cell_value(int *tab, int sqrlen);
+int check_col_up(int ***matrix, int input, int sqrlen, int x);
+int check_col_down(int ***matrix, int input, int sqrlen, int x);
+int check_row_left(int ***matrix, int input, int sqrlen, int y);
+int check_row_right(int ***matrix, int input, int sqrlen, int y);
 
 
 //*************************** CREATE_MATRIX.C ****************************

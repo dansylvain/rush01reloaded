@@ -2,14 +2,15 @@ CC = gcc
 EXEC = rush-01
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
+FLAGS = -Wall -Wextra -Werror
 
 all : $(EXEC)
 
 %.o : %.c headerfile.h
-	$(CC) -o $@ -c $<
+	$(CC) $(FLAGS) -o $@ -c $<
 
 $(EXEC) : $(OBJ)
-	$(CC) -Wall -Wextra -Werror -o $@ $^
+	$(CC)  -o $@ $^
 
 clean :
 	rm -rf *.o
