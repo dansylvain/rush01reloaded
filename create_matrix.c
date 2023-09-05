@@ -24,7 +24,7 @@ int ***copy_matrix(int ***matrix, int ***copy_matrix, int sqrlen)
         }
         y++;
     }
-    return (matrix);
+    return (copy_matrix);
 }
 
 
@@ -76,6 +76,7 @@ int ***fill_matrix(int ***matrix, int sqrlen)
                 matrix[y][x][z] = z + 1;
                 z++;
             }
+            matrix[y][x][z] = 10;
             x++;
         }
         y++;

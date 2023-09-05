@@ -19,7 +19,7 @@ int get_sqrlen(int ***matrix)
     int sqrlen;
 
     sqrlen = 0;
-    while (matrix[0][0][sqrlen])
+    while (matrix[0][0][sqrlen] != 10)
     {
         sqrlen ++;
     }

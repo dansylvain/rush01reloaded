@@ -17,7 +17,27 @@ int cell_iscomplete(int ***matrix, int x, int y, int sqrlen)
         return 1;
     else if (i == sqrlen) //    no digit left
         return 2;
-    return (0);         //      more than one digit left
+    else
+        return (0);         //      more than one digit left
+}
+
+int matrix_is_complete(int  ***matrix)
+{
+    int sqrlen;
+
+    sqrlen = get_sqrlen(matrix);
+    apply_matrix_filter(matrix);
+    apply_matrix_filter(matrix);
+    apply_matrix_filter(matrix);
+    apply_matrix_filter(matrix);
+    apply_matrix_filter(matrix);
+    if (!get_matrix_state(matrix, sqrlen))
+    {
+        display_solution(matrix, sqrlen);
+        return (1);
+    }
+    else
+        return (0);
 }
 
 int get_matrix_state(int ***matrix, int sqrlen)

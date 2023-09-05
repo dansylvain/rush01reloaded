@@ -59,12 +59,14 @@ void    display_input_tab(int **input_tab, int sqrlen)
     printf("\n");
 }
 
-void    display_matrix(int ***matrix, int sqrlen)
+void    display_matrix(int ***matrix)
 {
     int x;
     int y;
     int z;
+    int sqrlen;
 
+    sqrlen = get_sqrlen(matrix);
     x = 0;
     y = 0;
     z = 0;

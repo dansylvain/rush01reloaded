@@ -13,7 +13,7 @@ void    apply_input_filter(int ***matrix,int **input_tab, int sqrlen);
 void    matrix_filter(int ***matrix, int x, int y, int sqrlen);
 void    clean_cell(int ***matrix, int x, int y, int sqrl);
 void    clean_matrix(int ***matrix, int sqrlen);
-void    apply_matrix_filter(int ***matrix, int sqrlen);
+void    apply_matrix_filter(int ***matrix);
 //********************** CHECK_INPUT.C ***********************************
 int get_digit_nbr(char *str);
 int chars_arevalid(char *str);
@@ -22,6 +22,7 @@ int inputstr_isvalid(char *str);
 //********************CHECK_MATRIX_STATE.C *******************************
 int cell_iscomplete(int ***matrix, int x, int y, int sqrlen);
 int get_matrix_state(int ***matrix, int sqrlen);
+int matrix_is_complete(int  ***matrix);
 //*************************** CREATE_MATRIX.C ****************************
 int ***alloc_memo_matrix(int ***matrix, int sqrlen);
 int ***fill_matrix(int ***matrix, int sqrlen);
@@ -41,11 +42,11 @@ int check_args(int argc, char**argv);
 int get_sqrlen(int ***matrix);
 
 //************************ GET_SOLUTION.C ********************************
-int    ***get_solution(int ***matrix, int ***matrix_copy, int sqrlen);
+void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen);
+void    erase_all_but_one_digit(int ***matrix, int x, int y, int z);
 //************************ MAIN.C ****************************************
 int    check_matrix_state(int ***matrix, int sqrlen);
 void    display_solution(int ***matrix, int sqrlen);
-void    display_matrix(int ***matrix, int sqrlen);
 //**************************** MAX_FILTERS.C *****************************
 void    max_filter_top(int ***matrix, int x, int sqrlen);
 void    max_filter_bottom(int ***matrix, int x, int sqrlen);
@@ -55,7 +56,7 @@ void    max_filter(int ***matrix, int x, int y, int sqrlen);
 
 
 void    display_input_tab(int **input_tab, int sqrlen);
-void    display_matrix(int ***matrix, int sqrlen);
+void    display_matrix(int ***matrix);
 
 
 

@@ -75,11 +75,13 @@ void    clean_matrix(int ***matrix, int sqrlen)
 }
 
 
-void    apply_matrix_filter(int ***matrix, int sqrlen)
+void    apply_matrix_filter(int ***matrix)
 {
     int x;
     int y;
+    int sqrlen;
 
+    sqrlen = get_sqrlen(matrix);
     y = 0;
     while (y < sqrlen)
     {

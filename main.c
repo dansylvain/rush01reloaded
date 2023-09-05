@@ -32,10 +32,23 @@ int main(int argc, char **argv)
     matrix_copy = create_matrix(sqrlen);
     apply_input_filter(matrix, input_tab, sqrlen);
     apply_input_filter(matrix, input_tab, sqrlen);
-    //display_matrix(matrix, sqrlen);
-    printf("sqrlen: %i\n", get_sqrlen(matrix));
-        // apply_matrix_filter(matrix, sqrlen);
-        // matrix = get_solution(matrix, matrix_copy, sqrlen);
+    apply_matrix_filter(matrix);
+    display_matrix(matrix);
+    
+    if (!cell_iscomplete(matrix, 1, 1, sqrlen))
+        printf("more than one digit left\n");
+    else if (cell_iscomplete(matrix, 0, 0, sqrlen) == 2)
+        printf("no digit left\n");
+    else if (cell_iscomplete(matrix, 0, 0, sqrlen) == 1)
+        printf("only one digit left\n");
+
+    
+    
+    //display_matrix(matrix_copy);
+    
+    
+    
+    //get_solution(matrix, matrix_copy, sqrlen);
         // clean_matrix(matrix, sqrlen);
         // display_solution(matrix, sqrlen);
 

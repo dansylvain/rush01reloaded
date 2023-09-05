@@ -1,17 +1,12 @@
 #include "headerfile.h"
 
-void    erase_all_but_one_digit(int ***matrix, int *xyz, int sqrlen)
+void    erase_all_but_one_digit(int ***matrix, int x, int y, int z)
 {
     int i;
     int winner;
-    int x;
-    int y;
-    int z;
-//printf("erase_all_but_one_digit\n");
-    x = xyz[0];
-    y = xyz[1];
-    z = xyz[2];
+    int sqrlen;
 
+    sqrlen = get_sqrlen(matrix);
     winner = matrix[y][x][z];
     i = 0;
     while (i < sqrlen)
@@ -22,42 +17,48 @@ void    erase_all_but_one_digit(int ***matrix, int *xyz, int sqrlen)
     matrix[y][x][z] = winner;
 }
 
-int    ***get_the_shit_done(int ***matrix, int ***matrix_copy, int *xyz, int sqrlen)
+void    erase_tested_number(int ***matrix, int ***matrix_copy, int sqrlen)
+{
+    // printf("func erase_tested_number!\n");
+    // display_matrix(matrix);
+    int x;
+    int y;
+    int z;
+    
+    y = 0;
+    while (y < sqrlen)
+    {
+        x = 0;
+        while (x < sqrlen)
+        {
+            z = 0;
+            while (z < sqrlen)
+            {
+                if (!cell_iscomplete(matrix, x, y, sqrlen) && matrix[y][x][z] != 0)
+                {
+                    matrix[y][x][z] = 0;
+                    // printf("matrix après delete: \n");
+                    // display_matrix(matrix);
+                    //printf("et on\n%i\n", matrix[y][x][z]);
+                    get_solution(matrix, matrix_copy, sqrlen);
+                }
+                z++;
+            }
+            x++;
+        }   
+        y++;
+    }
+    //get_solution(matrix, matrix_copy, sqrlen);
+
+    //exit(1);
+}
+
+void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
 {
     int x;
     int y;
     int z;
-         
-    x = xyz[0];
-    y = xyz[1];
-    z = xyz[2];
     
-
-        if (!get_matrix_state(matrix_copy, sqrlen))
-        {
-            return (matrix_copy);
-        }
-        else if (get_matrix_state(matrix, sqrlen) == -1)
-        {
-            matrix[y][x][z] = z + 1;
-            matrix = copy_matrix(matrix_copy, matrix, sqrlen);
-        }
-        else if (matrix[y][x][z] != 0 && !cell_iscomplete(matrix, x, y, sqrlen))
-        {
-            erase_all_but_one_digit(matrix_copy, xyz, sqrlen);
-            apply_matrix_filter(matrix_copy, sqrlen);            
-            get_solution(matrix, matrix_copy, sqrlen);
-        }
-        return (0);
-}
-
-int    ***get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
-{
-    int x = 0;
-    int y = 0;
-    int z = 0;
-    int xyz[3];
-
     matrix_copy = copy_matrix(matrix, matrix_copy, sqrlen);
     y = 0;
     while (y < sqrlen)
@@ -68,15 +69,27 @@ int    ***get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
             z = 0;
             while (z < sqrlen)
             {
-                xyz[0] = x;
-                xyz[1] = y;
-                xyz[2] = z;
-                get_the_shit_done(matrix, matrix_copy, xyz, sqrlen);
+                if (!cell_iscomplete(matrix_copy, x, y, sqrlen) && matrix_copy[y][x][z] != 0)
+                {
+                    erase_all_but_one_digit(matrix_copy, x, y, z);
+                    display_matrix(matrix_copy);
+                    if (matrix_is_complete(matrix_copy))
+                        printf("solution found\n");
+                    //display_matrix(matrix_copy);
+                    //get_solution(matrix, matrix_copy, sqrlen);
+                }
                 z++;
             }
             x++;
         }   
         y++;
     }
-    return (matrix);
+    {
+    //    printf("sa mère\n");
+        erase_tested_number(matrix, matrix_copy, sqrlen);
+    }
+
+     //   printf("ouiz!\n");
+       // return;
+
 }
