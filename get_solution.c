@@ -72,6 +72,7 @@ void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
                 if (!cell_iscomplete(matrix_copy, x, y, sqrlen) && matrix_copy[y][x][z] != 0)
                 {
                     erase_all_but_one_digit(matrix_copy, x, y, z);
+                    apply_matrix_filter(matrix_copy);
                     display_matrix(matrix_copy);
                     if (matrix_is_complete(matrix_copy))
                         printf("solution found\n");

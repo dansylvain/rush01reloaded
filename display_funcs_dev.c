@@ -4,6 +4,7 @@ void    display_solution(int ***matrix, int sqrlen)
 {
     int x;
     int y;
+    int z;
     int num;
 
     y = 0;
@@ -13,9 +14,17 @@ void    display_solution(int ***matrix, int sqrlen)
         x = 0;
         while (x < sqrlen)
         {
-            num = matrix[y][x][0] + 48;
-            write(1, &num, 1);
-            write(1, " ", 1);
+            z = 0;
+            while (z < sqrlen)
+            {
+                if (matrix[y][x][z] != 0)
+                {
+                    num = matrix[y][x][z] + 48;
+                    write(1, &num, 1);
+                    write(1, " ", 1);
+                }
+                z++;
+            }
             x++;
         }
         write(1, "\n", 1);

@@ -1,5 +1,16 @@
 #include "headerfile.h"
 
+int matrix_is_impossible(int ***matrix)
+{
+    int sqrlen;
+
+    sqrlen = get_sqrlen(matrix);
+    if (get_matrix_state(matrix, sqrlen) == -1)
+        return (1);
+    else
+        return (0);
+}
+
 int cell_iscomplete(int ***matrix, int x, int y, int sqrlen)
 {
     int z;
