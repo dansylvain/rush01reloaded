@@ -35,10 +35,11 @@ int main(int argc, char **argv)
     apply_matrix_filter(matrix);
     apply_matrix_filter(matrix);
     apply_matrix_filter(matrix);
+    printf("Matrix:\n");
     display_matrix(matrix);
     
 
-    get_solution(matrix, matrix_copy, sqrlen);
+    //get_solution(matrix, matrix_copy, sqrlen, input_tab);
     // clean_matrix(matrix, sqrlen);
 
     free_tab(input_tab);

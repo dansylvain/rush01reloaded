@@ -1,5 +1,7 @@
 #include "headerfile.h"
 
+
+
 int matrix_is_impossible(int ***matrix)
 {
     int sqrlen;
@@ -44,7 +46,6 @@ int matrix_is_complete(int  ***matrix)
     apply_matrix_filter(matrix);
     if (!get_matrix_state(matrix, sqrlen))
     {
-        display_solution(matrix, sqrlen);
         return (1);
     }
     else

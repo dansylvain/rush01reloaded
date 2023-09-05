@@ -23,6 +23,11 @@ int inputstr_isvalid(char *str);
 int cell_iscomplete(int ***matrix, int x, int y, int sqrlen);
 int get_matrix_state(int ***matrix, int sqrlen);
 int matrix_is_complete(int  ***matrix);
+
+//******************** CHECK_SOLUTION.C **********************************
+int solution_is_correct(int ***matrix, int **input_tab);
+
+
 //*************************** CREATE_MATRIX.C ****************************
 int ***alloc_memo_matrix(int ***matrix, int sqrlen);
 int ***fill_matrix(int ***matrix, int sqrlen);
@@ -42,7 +47,7 @@ int check_args(int argc, char**argv);
 int get_sqrlen(int ***matrix);
 
 //************************ GET_SOLUTION.C ********************************
-void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen);
+void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen, int **input_tab);
 void    erase_all_but_one_digit(int ***matrix, int x, int y, int z);
 //************************ MAIN.C ****************************************
 int    check_matrix_state(int ***matrix, int sqrlen);

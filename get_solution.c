@@ -17,7 +17,7 @@ void    erase_all_but_one_digit(int ***matrix, int x, int y, int z)
     matrix[y][x][z] = winner;
 }
 
-void    erase_tested_number(int ***matrix, int ***matrix_copy, int sqrlen)
+void    erase_tested_number(int ***matrix, int ***matrix_copy, int sqrlen, int **input_tab)
 {
     // printf("func erase_tested_number!\n");
     // display_matrix(matrix);
@@ -40,7 +40,7 @@ void    erase_tested_number(int ***matrix, int ***matrix_copy, int sqrlen)
                     // printf("matrix après delete: \n");
                     // display_matrix(matrix);
                     //printf("et on\n%i\n", matrix[y][x][z]);
-                    get_solution(matrix, matrix_copy, sqrlen);
+                    get_solution(matrix, matrix_copy, sqrlen, input_tab);
                 }
                 z++;
             }
@@ -53,7 +53,7 @@ void    erase_tested_number(int ***matrix, int ***matrix_copy, int sqrlen)
     //exit(1);
 }
 
-void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
+void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen, int **input_tab)
 {
     int x;
     int y;
@@ -73,9 +73,12 @@ void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
                 {
                     erase_all_but_one_digit(matrix_copy, x, y, z);
                     apply_matrix_filter(matrix_copy);
-                    display_matrix(matrix_copy);
+                    //display_matrix(matrix_copy);
                     if (matrix_is_complete(matrix_copy))
-                        printf("solution found\n");
+                        {
+                            if (solution_is_correct(matrix_copy, input_tab))
+                            display_solution(matrix_copy, sqrlen);
+                        }
                     //display_matrix(matrix_copy);
                     //get_solution(matrix, matrix_copy, sqrlen);
                 }
@@ -87,7 +90,7 @@ void    get_solution(int ***matrix, int ***matrix_copy, int sqrlen)
     }
     {
     //    printf("sa mère\n");
-        erase_tested_number(matrix, matrix_copy, sqrlen);
+        erase_tested_number(matrix, matrix_copy, sqrlen, input_tab);
     }
 
      //   printf("ouiz!\n");
